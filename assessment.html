@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Fluency Assessment — Greenlight AI</title>
+<meta name="description" content="Scopri in 5 minuti a che punto è la tua azienda nell'uso responsabile dell'AI. Punteggio immediato e consiglio personalizzato.">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicons/favicon.svg">
+<link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+<link rel="manifest" href="assets/favicons/site.webmanifest">
+
+<link rel="canonical" href="https://fernandocarta.it/assessment">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Greenlight AI">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="AI Fluency Assessment — Greenlight AI">
+<meta property="og:description" content="Scopri in 5 minuti a che punto è la tua azienda nell'uso responsabile dell'AI. Punteggio immediato e consiglio personalizzato.">
+<meta property="og:url" content="https://fernandocarta.it/assessment">
+<meta property="og:image" content="https://fernandocarta.it/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Fluency Assessment — Greenlight AI">
+<meta name="twitter:description" content="Scopri in 5 minuti a che punto è la tua azienda nell'uso responsabile dell'AI. Punteggio immediato e consiglio personalizzato.">
+<meta name="twitter:image" content="https://fernandocarta.it/assets/og-image.jpg">
+<meta name="theme-color" content="#0b0f19">
+
+<!-- Dati strutturati (JSON-LD) per motori di ricerca -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://fernandocarta.it/#website",
+      "url": "https://fernandocarta.it/",
+      "name": "Fernando Carta",
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://fernandocarta.it/assessment#webpage",
+      "url": "https://fernandocarta.it/assessment",
+      "name": "AI Fluency Assessment — Greenlight AI",
+      "description": "Scopri in 5 minuti a che punto è la tua azienda nell'uso responsabile dell'AI. Punteggio immediato e consiglio personalizzato.",
+      "inLanguage": "it-IT",
+      "isPartOf": { "@id": "https://fernandocarta.it/#website" },
+      "about": { "@id": "https://fernandocarta.it/greenlight-ai#service" },
+      "primaryImageOfPage": "https://fernandocarta.it/assets/og-image.jpg"
+    }
+  ]
+}
+</script>
+
+<!-- Stile condiviso del sito principale (stesso foglio di index.html / greenlight-ai.html) -->
+<link rel="stylesheet" href="assets/style.css">
+
+<!--
+  Estensioni minime, solo per questa pagina: i componenti del quiz (barre di
+  progresso, opzioni, gauge, card per dimensione) non hanno equivalenti in
+  assets/style.css, quindi restano qui, costruiti con le stesse variabili
+  CSS del sito (--card, --card-2, --text, --muted, --accent, --accent-2,
+  --border) per restare coerenti con il resto del sito.
+-->
+<style>
+  .text-center { text-align: center; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  .hidden { display: none !important; }
+  .btn-block { width: 100%; justify-content: center; }
+
+  .assess-shell {
+    max-width: 760px;
+    margin: 40px auto 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px;
+  }
+  @media (max-width: 640px) { .assess-shell { padding: 28px 20px; } }
+  .assess-shell h3 { color: var(--text); font-size: 21px; margin: 0 0 10px; }
+
+  .progress-track { height: 6px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; margin-bottom: 8px; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s ease; width: 0%; }
+  .progress-label { font-size: .78rem; color: var(--muted); margin-bottom: 32px; }
+
+  .q-block { margin-bottom: 36px; }
+  .q-block:last-child { margin-bottom: 0; }
+  .q-num { font-size: .78rem; font-weight: 700; color: var(--accent); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 6px; }
+  .q-text { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+
+  .opt-list { display: flex; flex-direction: column; gap: 10px; }
+  .opt { display: flex; align-items: center; gap: 12px; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+  .opt:hover { border-color: var(--accent); background: rgba(56,189,248,.06); }
+  .opt.selected { border-color: var(--accent); background: rgba(56,189,248,.1); }
+  .opt input { accent-color: var(--accent); width: 17px; height: 17px; flex-shrink: 0; }
+  .opt span { font-size: .93rem; color: var(--text); }
+
+  .step-nav { display: flex; justify-content: space-between; margin-top: 40px; gap: 12px; }
+
+  .field { margin-bottom: 18px; text-align: left; }
+  .field label { display: block; font-size: .85rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .field input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font-family: inherit; font-size: .95rem; background: var(--card-2); color: var(--text); }
+  .field input:focus { outline: none; border-color: var(--accent); }
+  .field-checkbox { display: flex; align-items: flex-start; gap: 10px; font-size: .82rem; color: var(--muted); }
+  .field-checkbox input { width: auto; margin-top: 3px; }
+
+  .result-head { text-align: center; margin-bottom: 36px; }
+  .result-head .eyebrow-label { font-size: .95rem; font-weight: 600; color: var(--muted); margin-bottom: 4px; }
+  .gauge-wrap { display: flex; justify-content: center; margin: 12px 0 8px; }
+  .gauge-score { font-size: 2.6rem; font-weight: 700; fill: var(--text); }
+  .gauge-outof { font-size: .95rem; color: var(--muted); text-align: center; }
+
+  .ring-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--card-2); border: 1px solid var(--border); color: var(--text); padding: 10px 22px; border-radius: 999px; font-weight: 700; margin-top: 14px; }
+  .ring-pill .kanji { color: var(--accent); font-size: 1.1rem; }
+
+  .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+  .dim-card { background: var(--card-2); border-left: 3px solid var(--accent); border-radius: 10px; padding: 16px 18px; }
+  .dim-card__top { display: flex; justify-content: space-between; font-size: .9rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .dim-bar-track { height: 8px; background: rgba(255,255,255,.1); border-radius: 999px; overflow: hidden; }
+  .dim-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%); width: 0%; transition: width 1s ease; }
+
+  .meaning-box { background: var(--card-2); border: 1px solid var(--border); border-radius: 16px; padding: 26px 28px; margin: 8px 0 32px; }
+  .meaning-box h3 { margin-bottom: 10px; }
+  .meaning-box p { color: var(--muted); margin: 0; }
+
+  .next-step-box { background: linear-gradient(145deg, rgba(56,189,248,.14), rgba(34,197,94,.1)); border: 1px solid var(--border); border-radius: 16px; padding: 26px 28px; margin-bottom: 28px; }
+  .next-step-box h3 { color: var(--text); margin-bottom: 8px; }
+  .next-step-box p { color: var(--muted); margin: 0; }
+
+  .small { font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo-link" href="/" aria-label="Fernando Carta - homepage"><img src="assets/logo-horizontal-dark.svg" alt="Fernando Carta - Business Technology Advisor" /></a>
+      <div class="nav-links">
+        <a href="/#credibilita">Profilo</a>
+        <a href="/#case-study">Case study</a>
+        <a href="/#servizi">Servizi</a>
+        <a href="/#metodo">Metodo</a>
+        <a href="/#offerte">Collaborazione</a>
+        <a href="/#contatti">Contatti</a>
+      </div>
+      <a class="btn btn-primary" href="https://meetings-eu1.hubspot.com/fernando-carta" target="_blank" rel="noopener">Prenota una call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="assessment">
+    <div class="container">
+      <div class="section-title text-center mx-auto">
+        <div class="eyebrow">AI Fluency Assessment</div>
+        <h2>Scopri a che anello sei arrivato</h2>
+        <p class="lead mx-auto">10 domande, circa 5 minuti. Alla fine ricevi un punteggio, un profilo e un consiglio concreto — anche via email.</p>
+      </div>
+
+      <div class="assess-shell">
+
+        <!-- STEP 0 — email gate -->
+        <div id="step-intro">
+          <h3>Prima di iniziare</h3>
+          <p class="small">Ti chiediamo un contatto per inviarti il report con il punteggio dettagliato. Non condividiamo i tuoi dati con terzi.</p>
+          <form id="intro-form">
+            <div class="field">
+              <label for="i-name">Nome e cognome</label>
+              <input type="text" id="i-name" required>
+            </div>
+            <div class="field">
+              <label for="i-email">Email aziendale</label>
+              <input type="email" id="i-email" required>
+            </div>
+            <div class="field">
+              <label for="i-company">Azienda</label>
+              <input type="text" id="i-company" required>
+            </div>
+            <div class="field field-checkbox">
+              <input type="checkbox" id="i-consent" required>
+              <label for="i-consent" style="margin:0;">Acconsento a ricevere il report via email e comunicazioni relative a questa richiesta.</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Inizia l'assessment</button>
+          </form>
+        </div>
+
+        <!-- STEP 1 — Part 1 of 2 -->
+        <div id="step-1" class="hidden">
+          <div class="progress-track"><div class="progress-fill" id="progress-1" style="width:0%;"></div></div>
+          <div class="progress-label">Parte 1 di 2 — Delegation, Description, Discernment</div>
+          <div id="quiz-part-1"></div>
+          <div class="step-nav">
+            <span></span>
+            <button type="button" class="btn btn-secondary" id="to-step-2" disabled>Continua →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 — Part 2 of 2 -->
+        <div id="step-2" class="hidden">
+          <div class="progress-track"><div class="progress-fill" id="progress-2" style="width:50%;"></div></div>
+          <div class="progress-label">Parte 2 di 2 — Discernment, Diligence, Normativa</div>
+          <div id="quiz-part-2"></div>
+          <div class="step-nav">
+            <button type="button" class="btn btn-secondary" id="back-to-1">← Indietro</button>
+            <button type="button" class="btn btn-primary" id="see-results" disabled>Vedi il risultato →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 — Risultati -->
+        <div id="step-results" class="hidden">
+          <div class="result-head">
+            <div class="eyebrow-label">Il tuo punteggio Greenlight AI</div>
+            <div class="gauge-wrap">
+              <svg width="200" height="200" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="84" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="16"/>
+                <circle id="gauge-arc" cx="100" cy="100" r="84" fill="none" stroke="#38bdf8" stroke-width="16"
+                        stroke-linecap="round" transform="rotate(-90 100 100)"
+                        stroke-dasharray="527.8" stroke-dashoffset="527.8"/>
+                <text x="100" y="108" text-anchor="middle" class="gauge-score" id="gauge-score-text">0</text>
+              </svg>
+            </div>
+            <div class="gauge-outof">su 200 punti</div>
+            <div class="ring-pill" id="ring-pill"><span class="kanji" id="ring-kanji">地</span> <span id="ring-label">Anello Chi</span></div>
+          </div>
+
+          <div class="dim-grid" id="dim-grid"></div>
+
+          <div class="meaning-box">
+            <h3>Cosa significa il tuo punteggio</h3>
+            <p id="meaning-text"></p>
+          </div>
+
+          <div class="next-step-box">
+            <h3>Prossimo passo consigliato</h3>
+            <p id="next-step-text"></p>
+          </div>
+
+          <div class="text-center">
+            <a href="https://meetings-eu1.hubspot.com/fernando-carta" class="btn btn-primary" id="cta-call">Prenota una call gratuita di 20 minuti</a>
+            <p class="small" style="margin-top:16px;" id="email-note">Ti abbiamo anche inviato questo risultato via email.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Fernando Carta — Business Technology Advisor.
+    <a href="/privacy-policy"> - Privacy Policy</a>
+    <a href="/cookie-policy"> - Cookie Policy</a>
+  </div>
+</footer>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/148210624.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+<script src="assets/assessment.js"></script>
+</body>
+</html>

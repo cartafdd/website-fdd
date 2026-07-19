@@ -1,0 +1,324 @@
+:root {
+  --bg: #0b0f19;
+  --card: #111827;
+  --card-2: #172033;
+  --text: #f9fafb;
+  --muted: #a5b4c3;
+  --accent: #38bdf8;
+  --accent-2: #22c55e;
+  --border: rgba(255,255,255,0.1);
+  --max: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top right, rgba(56,189,248,.18), transparent 32%), var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(100% - 32px, var(--max));
+  margin: 0 auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+  background: rgba(11,15,25,.78);
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.logo span { color: var(--accent); }
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  min-width: 210px;
+}
+
+.logo-link img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: .2s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #04111d;
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(56,189,248,.22); }
+
+.btn-secondary {
+  border-color: var(--border);
+  color: var(--text);
+  background: rgba(255,255,255,.04);
+}
+
+.btn-secondary:hover { border-color: var(--accent); }
+
+.hero {
+  padding: 88px 0 64px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: .12em;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: .96;
+  letter-spacing: -0.065em;
+  margin: 0 0 24px;
+}
+
+.lead {
+  font-size: 20px;
+  color: var(--muted);
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-card {
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.22);
+}
+
+.metric {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.metric:last-child { border-bottom: 0; }
+
+.metric strong {
+  display: block;
+  font-size: 28px;
+  color: var(--accent-2);
+}
+
+.metric span { color: var(--muted); }
+
+section { padding: 72px 0; }
+
+.section-title {
+  max-width: 780px;
+  margin-bottom: 36px;
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  margin: 0 0 14px;
+}
+
+.section-title p { color: var(--muted); font-size: 18px; }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 26px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+}
+
+.card p, .card li { color: var(--muted); }
+
+.card ul { padding-left: 18px; margin-bottom: 0; }
+
+.tag {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(56,189,248,.12);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.process {
+  counter-reset: step;
+}
+
+.process .card { position: relative; }
+
+.process .card:before {
+  counter-increment: step;
+  content: counter(step);
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #04111d;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.offer {
+  background: linear-gradient(145deg, var(--card), var(--card-2));
+}
+
+.price {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  margin: 16px 0 6px;
+}
+
+.note { color: var(--muted); font-size: 14px; }
+
+.cta {
+  background: linear-gradient(145deg, rgba(56,189,248,.18), rgba(34,197,94,.12));
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+footer {
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 880px) {
+  .hero-grid, .grid-3,.grid-4, .grid-2, .cta { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero { padding-top: 56px; }
+  .cta { padding: 30px; }
+
+  /* Header: con .nav-links nascosti restano solo logo + bottone "Prenota
+     una call". Senza queste regole il logo (min-width 210px) e il testo
+     del bottone non ci stanno nella larghezza disponibile: il testo va a
+     capo su due righe e, con border-radius 999px, il bottone diventa un
+     ovale gonfio che sborda sopra al contenuto sottostante. */
+  .logo-link { min-width: 0; }
+  .logo-link img { width: 160px; }
+  nav .btn { padding: 10px 16px; font-size: 13px; white-space: nowrap; }
+}
+
+@media (max-width: 360px) {
+  .logo-link img { width: 130px; }
+  nav .btn { padding: 9px 12px; font-size: 12px; }
+}
+.hero-visual {
+  display: block;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 32px 80px rgba(0,0,0,.28);
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+}
+
+.hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (max-width: 880px) {
+  .hero-visual {
+    border-radius: 26px;
+  }
+
+  .hero-visual img {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.section-title-spaced {
+  margin-top: 36px;
+  margin-bottom: 0;
+}

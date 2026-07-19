@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Fluency Assessment — Greenlight AI</title>
+<meta name="description" content="Scopri in 5 minuti a che punto è la tua azienda nell'uso responsabile dell'AI. Punteggio immediato e consiglio personalizzato.">
+
+<!-- Deploy: rinominare in assessment.html. CSS in /assets/greenlight.css, script in /assets/assessment.js -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/greenlight.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Greenlight<span class="dot">.</span>AI</a>
+    <nav><ul class="nav-links"><li><a href="index.html">Torna al sito</a></li></ul></nav>
+    <div class="nav-cta"></div>
+  </div>
+</header>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:36px;">
+      <div class="kicker">AI Fluency Assessment</div>
+      <h1 style="font-size:2rem;">Scopri a che anello sei arrivato</h1>
+      <p class="lede mx-auto">10 domande, circa 5 minuti. Alla fine ricevi un punteggio, un profilo e un consiglio concreto — anche via email.</p>
+    </div>
+
+    <div class="assess-shell">
+
+      <!-- STEP 0 — email gate -->
+      <div id="step-intro">
+        <h3>Prima di iniziare</h3>
+        <p class="small" style="color:var(--grey);">Ti chiediamo un contatto per inviarti il report con il punteggio dettagliato. Non condividiamo i tuoi dati con terzi.</p>
+        <form id="intro-form">
+          <div class="field">
+            <label for="i-name">Nome e cognome</label>
+            <input type="text" id="i-name" required>
+          </div>
+          <div class="field">
+            <label for="i-email">Email aziendale</label>
+            <input type="email" id="i-email" required>
+          </div>
+          <div class="field">
+            <label for="i-company">Azienda</label>
+            <input type="text" id="i-company" required>
+          </div>
+          <div class="field field-checkbox">
+            <input type="checkbox" id="i-consent" required>
+            <label for="i-consent" style="margin:0;">Acconsento a ricevere il report via email e comunicazioni relative a questa richiesta.</label>
+          </div>
+          <button type="submit" class="btn btn--gold btn--block">Inizia l'assessment</button>
+        </form>
+      </div>
+
+      <!-- STEP 1 — Part 1 of 2 -->
+      <div id="step-1" class="hidden">
+        <div class="progress-track"><div class="progress-fill" id="progress-1" style="width:0%;"></div></div>
+        <div class="progress-label">Parte 1 di 2 — Delegation, Description, Discernment</div>
+        <div id="quiz-part-1"></div>
+        <div class="step-nav">
+          <span></span>
+          <button type="button" class="btn btn--outline-navy" id="to-step-2" disabled>Continua →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 — Part 2 of 2 -->
+      <div id="step-2" class="hidden">
+        <div class="progress-track"><div class="progress-fill" id="progress-2" style="width:50%;"></div></div>
+        <div class="progress-label">Parte 2 di 2 — Discernment, Diligence, Normativa</div>
+        <div id="quiz-part-2"></div>
+        <div class="step-nav">
+          <button type="button" class="btn btn--outline-navy" id="back-to-1">← Indietro</button>
+          <button type="button" class="btn btn--gold" id="see-results" disabled>Vedi il risultato →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 — Risultati -->
+      <div id="step-results" class="hidden">
+        <div class="result-head">
+          <h3 style="color:var(--grey); font-family:var(--font-body); font-weight:600; font-size:0.95rem;">Il tuo punteggio Greenlight AI</h3>
+          <div class="gauge-wrap">
+            <svg width="200" height="200" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="84" fill="none" stroke="#E2E6EB" stroke-width="16"/>
+              <circle id="gauge-arc" cx="100" cy="100" r="84" fill="none" stroke="#B08D3F" stroke-width="16"
+                      stroke-linecap="round" transform="rotate(-90 100 100)"
+                      stroke-dasharray="527.8" stroke-dashoffset="527.8"/>
+              <text x="100" y="108" text-anchor="middle" class="gauge-score" id="gauge-score-text">0</text>
+            </svg>
+          </div>
+          <div class="gauge-outof">su 200 punti</div>
+          <div class="ring-pill" id="ring-pill"><span class="kanji" id="ring-kanji">地</span> <span id="ring-label">Anello Chi</span></div>
+        </div>
+
+        <div class="dim-grid" id="dim-grid"></div>
+
+        <div class="meaning-box">
+          <h3>Cosa significa il tuo punteggio</h3>
+          <p id="meaning-text"></p>
+        </div>
+
+        <div class="next-step-box">
+          <h3>Prossimo passo consigliato</h3>
+          <p id="next-step-text"></p>
+        </div>
+
+        <div class="text-center">
+          <a href="https://meetings-eu1.hubspot.com/fernando-carta" class="btn btn--gold" id="cta-call">Prenota una call gratuita di 20 minuti</a>
+          <p class="small" style="color:var(--grey); margin-top:16px;" id="email-note">Ti abbiamo anche inviato questo risultato via email.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2026 Greenlight AI — un servizio di Fernando Carta.</div>
+    <div><a href="index.html" style="opacity:.8;">Torna al sito</a></div>
+  </div>
+</footer>
+
+<script src="assets/assessment.js"></script>
+</body>
+</html>

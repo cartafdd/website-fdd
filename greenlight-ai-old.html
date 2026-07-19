@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenlight AI — Il metodo per costruire la policy d'uso dell'AI in azienda</title>
+<meta name="description" content="Un metodo per costruire, insieme al tuo team, una policy d'uso dell'AI su misura. Scopri il tuo livello di maturità con l'assessment gratuito.">
+<meta name="author" content="Fernando Carta">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicons/favicon.svg">
+<link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+<link rel="manifest" href="assets/favicons/site.webmanifest">
+
+<!--
+  SEO/URL: la pagina vive alla radice del sito insieme a index.html (non in
+  una sottocartella), e Cloudflare Pages serve di default gli URL "puliti"
+  (greenlight-ai.html è raggiungibile a /greenlight-ai, senza estensione e
+  senza redirect da configurare). Gli indirizzi sotto sono quindi già nella
+  forma definitiva, ripetuti in più punti (canonical, Open Graph, Twitter,
+  JSON-LD): se in futuro la pagina cambia indirizzo vanno aggiornati tutti insieme.
+-->
+<link rel="canonical" href="https://fernandocarta.it/greenlight-ai">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Greenlight AI">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Greenlight AI — Il metodo per costruire la policy d'uso dell'AI in azienda">
+<meta property="og:description" content="Un metodo per costruire, insieme al tuo team, una policy d'uso dell'AI su misura. Scopri il tuo livello di maturità con l'assessment gratuito.">
+<meta property="og:url" content="https://fernandocarta.it/greenlight-ai">
+<meta property="og:image" content="https://fernandocarta.it/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Greenlight AI — Il metodo per costruire la policy d'uso dell'AI in azienda">
+<meta name="twitter:description" content="Un metodo per costruire, insieme al tuo team, una policy d'uso dell'AI su misura. Scopri il tuo livello di maturità con l'assessment gratuito.">
+<meta name="twitter:image" content="https://fernandocarta.it/assets/og-image.jpg">
+
+<meta name="theme-color" content="#0b0f19">
+
+<!-- Stile condiviso del sito principale (stessa foglio di index.html) -->
+<link rel="stylesheet" href="assets/style.css">
+
+<!--
+  Estensioni minime, solo per questa pagina: componenti che il resto del
+  sito non ha ancora (griglia a 5 colonne per i Cinque Anelli, blocco
+  statistica, card del form di contatto) ma costruite con le stesse
+  variabili CSS di assets/style.css, così restano coerenti con il resto
+  del sito e con eventuali futuri aggiornamenti di stile.
+-->
+<style>
+  .hero-grid--single { grid-template-columns: 1fr; max-width: 760px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  @media (max-width: 880px) { .grid-5 { grid-template-columns: repeat(2, 1fr); } }
+  .kanji { display: block; font-size: 28px; color: var(--accent); margin-bottom: 6px; }
+  .stat-block { margin-top: 18px; }
+  .stat-block strong { display: block; font-size: 44px; letter-spacing: -0.02em; color: var(--accent-2); margin-bottom: 8px; }
+  .contact-card { max-width: 560px; margin: 0 auto; }
+  .text-center { text-align: center; }
+  .text-center p { margin-left: auto; margin-right: auto; }
+  .hubspot-form-box { background: #fff; padding: 24px; border-radius: 16px; }
+  .hubspot-form-box iframe { width: 100% !important; background: #fff; }
+</style>
+
+<!-- Dati strutturati (JSON-LD) per motori di ricerca -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://fernandocarta.it/#website",
+      "url": "https://fernandocarta.it/",
+      "name": "Fernando Carta",
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://fernandocarta.it/greenlight-ai#webpage",
+      "url": "https://fernandocarta.it/greenlight-ai",
+      "name": "Greenlight AI — Il metodo per costruire la policy d'uso dell'AI in azienda",
+      "description": "Un metodo per costruire, insieme al tuo team, una policy d'uso dell'AI su misura. Scopri il tuo livello di maturità con l'assessment gratuito.",
+      "inLanguage": "it-IT",
+      "isPartOf": { "@id": "https://fernandocarta.it/#website" },
+      "about": { "@id": "https://fernandocarta.it/greenlight-ai#service" },
+      "primaryImageOfPage": "https://fernandocarta.it/assets/og-image.jpg"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://fernandocarta.it/#person",
+      "name": "Fernando Carta",
+      "url": "https://fernandocarta.it/",
+      "jobTitle": "Business Technology Advisor",
+      "description": "Consulente tecnologico indipendente, oltre 15 anni di esperienza in governance IT, sviluppo software e trasformazione digitale.",
+      "worksFor": { "@id": "https://fernandocarta.it/greenlight-ai#service" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://fernandocarta.it/greenlight-ai#service",
+      "name": "Greenlight AI",
+      "serviceType": "Consulenza per la definizione di policy d'uso dell'intelligenza artificiale in azienda",
+      "description": "Metodo di consulenza per costruire, insieme al team dell'azienda cliente, una AI Usage Policy su misura, ancorata al modello 4D e articolata in cinque fasi (i Cinque Anelli).",
+      "provider": { "@id": "https://fernandocarta.it/#person" },
+      "areaServed": { "@type": "Country", "name": "Italia" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Piccole e medie imprese"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo-link" href="/" aria-label="Fernando Carta - homepage"><img src="assets/logo-horizontal-dark.svg" alt="Fernando Carta - Business Technology Advisor" /></a>
+      <div class="nav-links">
+        <a href="/#credibilita">Profilo</a>
+        <a href="/#case-study">Case study</a>
+        <a href="/#servizi">Servizi</a>
+        <a href="/#metodo">Metodo</a>
+        <a href="/#offerte">Collaborazione</a>
+        <a href="/#contatti">Contatti</a>
+      </div>
+      <a class="btn btn-primary" href="https://meetings-eu1.hubspot.com/fernando-carta" target="_blank" rel="noopener">Prenota una call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ 1. HERO ============ -->
+  <section class="hero" id="top">
+    <div class="container hero-grid hero-grid--single">
+      <div>
+        <div class="eyebrow">Greenlight AI</div>
+        <h1>La tua azienda usa già l'AI. Ha già le regole per farlo?</h1>
+        <p class="lead">Un metodo per costruire, insieme al tuo team, una policy d'uso dell'AI su misura — prima che normativa e rischi ti costringano a rincorrere.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/assessment">Fai l'assessment gratuito (5 minuti)</a>
+          <a class="btn btn-secondary" href="#metodo">Scopri il metodo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. PERCHÉ ORA ============ -->
+  <section id="perche-ora">
+    <div class="container">
+      <div class="section-title">
+        <h2>Il vero motivo per agire non è l'AI. È la scadenza.</h2>
+        <p>Due normative già in vigore rendono la policy un obbligo con scadenze concrete — non un tema da rimandare.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag">EU AI Act</span>
+          <h3>Obblighi di trasparenza e supervisione umana</h3>
+          <p><strong>Cosa prescrive:</strong> gestione del rischio, supervisione umana e alfabetizzazione AI obbligatoria per il personale (art. 4).</p>
+          <p><strong>Quando:</strong> in vigore dal 2024, applicazione a fasi — divieti e obbligo di AI literacy da feb. 2025, obblighi per i modelli generalisti (GPAI) da ago. 2025, sistemi ad alto rischio da dic. 2027.</p>
+          <p><strong>Rischi senza policy:</strong> fino a 35 milioni di € o al 7% del fatturato globale annuo per le violazioni più gravi.</p>
+        </div>
+        <div class="card">
+          <span class="tag">GDPR</span>
+          <h3>Liceità del trattamento e diritto alla spiegazione</h3>
+          <p><strong>Cosa prescrive:</strong> liceità del trattamento dati, minimizzazione, diritto a non subire decisioni basate solo su elaborazione automatizzata (art. 22).</p>
+          <p><strong>Quando:</strong> già pienamente in vigore — si applica oggi a ogni uso di AI che tratta dati personali.</p>
+          <p><strong>Rischi senza policy:</strong> fino a 20 milioni di € o al 4% del fatturato globale annuo.</p>
+        </div>
+      </div>
+
+      <div class="card stat-block">
+        <strong>78%</strong>
+        <p>delle organizzazioni non ha ancora intrapreso passi concreti verso la conformità all'EU AI Act — un problema di scadenze, non di tecnologia.</p>
+      </div>
+      <p class="note">Fonti: Regolamento (UE) 2024/1689 (AI Act), Regolamento (UE) 2016/679 (GDPR), Vision Compliance — 2026 EU AI Act Readiness Report.</p>
+    </div>
+  </section>
+
+  <!-- ============ 3. IL METODO ============ -->
+  <section id="metodo">
+    <div class="container">
+      <div class="section-title">
+        <h2>Non un documento da copiare. Un metodo.</h2>
+        <p>Ogni policy che costruiamo nasce da due strutture: le competenze delle persone (le 4D) e le fasi del progetto (i Cinque Anelli).</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <h3>Delegation</h3>
+          <p>Cosa affidiamo all'AI, e cosa resta sempre in mano alle persone.</p>
+        </div>
+        <div class="card">
+          <h3>Description</h3>
+          <p>Come comunichiamo con l'AI, e cosa non le diciamo mai.</p>
+        </div>
+        <div class="card">
+          <h3>Discernment</h3>
+          <p>Quanto verifichiamo un risultato prima di usarlo.</p>
+        </div>
+        <div class="card">
+          <h3>Diligence</h3>
+          <p>Chi si assume la responsabilità di ciò che viene fatto con l'AI.</p>
+        </div>
+      </div>
+      <p class="note">Fonte: The AI Fluency Framework — R. Dakan, J. Feller, Anthropic (2025).</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. IL PERCORSO — CINQUE ANELLI ============ -->
+  <section id="percorso">
+    <div class="container">
+      <div class="section-title">
+        <h2>Cinque fasi, ispirate al Go Rin No Sho</h2>
+        <p>Le fasi del progetto prendono il nome dai Cinque Anelli del trattato di strategia di Miyamoto Musashi (1645): ogni anello prepara il successivo.</p>
+      </div>
+
+      <div class="grid-5">
+        <div class="card">
+          <span class="kanji">地</span>
+          <h3>Chi · Check</h3>
+          <p>Mappatura del contesto</p>
+          <p class="note">Sett. 1–2</p>
+        </div>
+        <div class="card">
+          <span class="kanji">水</span>
+          <h3>Sui · Scan</h3>
+          <p>Mappatura ruoli × modalità × rischio</p>
+          <p class="note">Sett. 2–4</p>
+        </div>
+        <div class="card">
+          <span class="kanji">火</span>
+          <h3>Ka · Signal</h3>
+          <p>Le regole per le 4D</p>
+          <p class="note">Sett. 4–5</p>
+        </div>
+        <div class="card">
+          <span class="kanji">風</span>
+          <h3>Fū · Tower</h3>
+          <p>Governance</p>
+          <p class="note">Sett. 5–6</p>
+        </div>
+        <div class="card">
+          <span class="kanji">空</span>
+          <h3>Kū · Go</h3>
+          <p>Formazione e adozione</p>
+          <p class="note">Sett. 6+</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. BLOCCO ASSESSMENT ============ -->
+  <section>
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2>Scopri a che punto sei, in 5 minuti</h2>
+          <p class="lead">10 domande, un punteggio, e un consiglio concreto su cosa fare per primo.</p>
+        </div>
+        <a class="btn btn-primary" href="/assessment">Inizia l'assessment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. CHI SONO ============ -->
+  <section id="chi-sono">
+    <div class="container">
+      <div class="section-title">
+        <h2>Un approccio indipendente, tecnico e orientato al business</h2>
+        <p>Oltre 15 anni in ambito IT, con esperienza in ruoli di leadership tecnologica, governance dei fornitori e trasformazione digitale. Greenlight AI nasce da questa esperienza, applicata a un problema specifico: dare alle aziende regole chiare e realistiche per l'uso dell'AI, prima che siano la normativa o un incidente a imporle. Il metodo è costruito insieme al team, non calato dall'alto: interviste, workshop e survey, non un documento scritto a tavolino.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Approccio indipendente</h3>
+          <p>Nessun legame con fornitori di strumenti AI: le raccomandazioni sono guidate solo dagli interessi dell'azienda cliente.</p>
+        </div>
+        <div class="card">
+          <h3>Background tecnico solido</h3>
+          <p>Esperienza diretta su sviluppo software, architetture e delivery, non solo teoria di governance.</p>
+        </div>
+        <div class="card">
+          <h3>Visione business</h3>
+          <p>La policy serve a lavorare meglio, non a bloccare l'adozione dell'AI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. CTA FINALE — FORM DI CONTATTO ============ -->
+  <section id="contatti">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Parliamone, senza impegno</h2>
+        <p>Lascia un contatto: capiamo insieme se e come Greenlight AI si adatta alla tua azienda. Nessun impegno.</p>
+      </div>
+      <div class="card contact-card">
+        <div class="hubspot-form-box">
+        <script src="https://js-eu1.hsforms.net/forms/embed/148210624.js" defer></script>
+        <div class="hs-form-frame" data-region="eu1" data-form-id="d48c8262-b398-431b-babf-740d833efa11" data-portal-id="148210624"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Fernando Carta — Business Technology Advisor.
+    <a href="/privacy-policy"> - Privacy Policy</a>
+    <a href="/cookie-policy"> - Cookie Policy</a>
+  </div>
+</footer>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/148210624.js"></script>
+<!-- End of HubSpot Embed Code -->
+</body>
+</html>

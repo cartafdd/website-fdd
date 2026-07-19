@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 240" role="img" aria-label="Fernando Carta - Business Technology Advisor">
+  <defs>
+    <linearGradient id="g" x1="70" y1="198" x2="220" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  
+  <g transform="translate(24 24) scale(.375)">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M92 192 L36 256 L92 320" stroke="#0b0f19" stroke-width="32"/>
+      <path d="M420 192 L476 256 L420 320" stroke="#0b0f19" stroke-width="32"/>
+    </g>
+    <g font-family="Inter, Arial, sans-serif" font-weight="800">
+      <text x="140" y="220" fill="#0b0f19" font-size="188">F</text>
+      <text x="250" y="344" fill="#0b0f19" font-size="178">C</text>
+    </g>
+    <g fill="none" stroke="url(#g)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M128 376 L212 264 L258 306 L374 140"/>
+      <path d="M374 140 L378 214"/>
+      <path d="M374 140 L304 166"/>
+    </g>
+  </g>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="250" y="103" fill="#0b0f19" font-size="58" font-weight="500" letter-spacing="-.02em">Fernando Carta</text>
+    <text x="253" y="150" fill="#2563eb" font-size="18" font-weight="800" letter-spacing=".28em">BUSINESS TECHNOLOGY ADVISOR</text>
+  </g>
+</svg>
